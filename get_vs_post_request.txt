@@ -1,0 +1,51 @@
+Get : frontend retrived data from api by get method. it hit api by get request to get the data 
+
+POST: Used to send data to the API, such as creating a new social media post. The data is sent in the request body for the server to process and store.
+The client sends data to the API using a POST request, and the API processes the data and may return a response with the stored data or a status message.
+
+
+Real-Life Scenario: Online Banking
+
+You open your banking app and fill out the “Transfer Money” form:
+
+From: Your account
+
+To: Friend’s account
+
+Amount: $100
+
+When you click Submit, the app sends a POST request to the bank’s server with your data:
+
+{
+  "from_account": "12345",
+  "to_account": "67890",
+  "amount": 100
+}
+
+
+The server processes it:
+
+Deducts $100 from your account
+
+Adds $100 to your friend’s account
+
+Returns a response: "Transfer successful!"
+
+📌 Here, the POST request creates a new transaction in the system.
+
+
+POST (Transfer Money)
+
+Purpose → Create a new transaction (change data).
+
+Example → Send JSON with transfer details.
+
+Effect → Updates database (money moves).
+
+GET (Check Balance / Transaction History)
+
+Purpose → Fetch existing information (read data).
+
+Example → Request account balance or last 5 transactions.
+
+Effect → Only reads database (no changes).

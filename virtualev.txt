@@ -1,0 +1,61 @@
+Good question 👍 Let’s break it down step by step:
+
+---
+
+### 1. `py` vs `py -3`
+
+* On **Windows**, `py` is the **Python launcher**.
+* Writing `py -3` tells the launcher:
+  👉 “Run Python 3 (the default installed Python 3 version on this system).”
+* If you also have **Python 2** installed (less common nowadays), `py` (without `-3`) might pick the wrong version, depending on configuration.
+
+---
+
+### 2. `-m venv venv1`
+
+* `-m venv` means: “Run the `venv` module to create a virtual environment.”
+* `venv1` is just the name of the folder where the virtual environment will be created.
+
+---
+
+### 3. So what’s the difference?
+
+* ✅ `py -3 -m venv venv1` → Forces Python 3 to be used to create the venv. Safe if you have multiple versions.
+* ✅ `py -m venv venv1` → Uses whichever Python version is the **default** (configured in `py` launcher). If Python 3 is the only one installed, it’ll usually work fine.
+
+---
+
+### 4. Example Scenarios
+
+* If you have **only Python 3.12** installed:
+  `py -m venv venv1` = `py -3 -m venv venv1` → Both same.
+* If you have **Python 2.7 and Python 3.12** installed:
+
+  * `py -m venv venv1` → Could run Python 2 (error, since `venv` doesn’t exist in Python 2).
+  * `py -3 -m venv venv1` → Always runs with Python 3, works fine.
+
+---
+
+✅ **Rule of thumb:**
+
+* Use `py -3 -m venv venv1` if you aren’t sure which version `py` will pick.
+* Use `py -m venv venv1` if you know Python 3 is your default (simpler).
+
+---
+
+Do you want me to also show you how to check which Python version `py` (without `-3`) will run on your system?
+
+
+
+
+We are using Global interpreturn python to use specific enterpeter we have to write
+
+.\venv1\Scripts\python.exe 
+
+Now for activate virtual environment we have to write
+
+venv1\Scripts\activate.bat
+
+Now open server 
+uvicorn main:app  // main is file name and app is instance name of fastapi
+
