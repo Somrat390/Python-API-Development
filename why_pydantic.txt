@@ -1,0 +1,13 @@
+Pydantic for making schema 
+Now why we need schema??
+
+==> In backend we expect data in title and content not any extra data from fortnend
+user data can be unvalid they can send blank title but we accept data in a structure
+so to force user to send the data in structre way we have to make a schema
+
+And this schema is made by Pydantic.
+
+Work principle:
+from pydantic import BaseModel
+
+then have to make a schema throug a cls 
