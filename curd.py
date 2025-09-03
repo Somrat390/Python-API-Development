@@ -17,6 +17,12 @@ def find_post(id):
     for post in my_posts:
         if post["id"] == id:
             return post
+        
+
+def find_indexpost(id):
+    for i, p in enumerate(my_posts):
+        if p["id"] == id:
+            return i
 
 @app.get("/")
 def root():
@@ -27,7 +33,7 @@ def get_posts():
     return {'data': my_posts}
 
 
-@app.post('/posts')
+@app.post('/posts', status_code=status.HTTP_201_CREATED)
 def create_post(post: Post):
     post_dict = post.dict()
     post_dict["id"] = randrange(0,1000000)
@@ -47,3 +53,8 @@ def get_post(id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id: {id} was not found")
     return {"post details": post}
 
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_post(id : int):
+    index = find_indexpost(id)
+    my_posts.pop(index)
+    return{"message": "post was successfully deleted"}
